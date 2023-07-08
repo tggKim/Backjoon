@@ -21,12 +21,8 @@ public class Main {
                 s.push(i);
             }
             else{
-                while(arr[s.peek()]<arr[i]){
-                    answer[s.peek()]=arr[i];
-                    s.pop();
-                    if(s.empty()){
-                        break;
-                    }
+                while(!s.empty() && arr[s.peek()]<arr[i]){
+                    answer[s.pop()]=arr[i];
                 }
                 s.push(i);
             }
@@ -43,4 +39,3 @@ public class Main {
         bw.flush();
     }
 }
-
