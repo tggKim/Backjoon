@@ -1,28 +1,33 @@
-import java.util.StringTokenizer;
 import java.io.*;
+import java.util.*;
 public class Main {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br=new  BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new  BufferedWriter(new OutputStreamWriter(System.out));
 
-	public static void main(String[] args) throws IOException{
-		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		int num=Integer.parseInt(br.readLine());
-		int[] k=new int[num];
-		
-		for(int i=0;i<num;i++) {
-			k[i]=Integer.parseInt(br.readLine());
-		}
-		
-		for(int i=0;i<num;i++) {
-			for(int j=0;j<num-1;j++) {
-				if(k[j]>k[j+1]) {
-					int x=k[j+1];
-					k[j+1]=k[j];
-					k[j]=x;
-				}
-			}
-		}
-		
-		for(int i=0;i<num;i++) {
-			System.out.println(k[i]);
-		}
-	}
+        int N = Integer.parseInt(br.readLine());
+        int[] arr = new int[N];
+
+        for(int i=0;i<N;i++){
+            arr[i]=Integer.parseInt(br.readLine());
+        }
+
+        for(int i=0;i<N;i++){
+            int answer=0;
+            for(int j=0;j<N-1-i;j++){
+                if(arr[j]>arr[j+1]){
+                    int temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                    answer=1;
+                }
+            }
+            if(answer==0){
+                break;
+            }
+        }
+        for(int i=0;i<N;i++){
+            System.out.println(arr[i]);
+        }
+    }
 }
